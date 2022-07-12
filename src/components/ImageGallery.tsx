@@ -7,7 +7,7 @@ import { RootState, Dispatch } from '../store'
 import {Image} from '../utils/types'
 
 const ImageGallery = () => {
-  const {images}:any = useSelector((state: RootState) => state.images)
+  const {images}:any = useSelector((state: RootState) => state.gallery)
     return (
         <StyledContainer>
             <Row className='mb-2'>

@@ -9,7 +9,7 @@ library.add(faTrashCan)
 type Tag = {
   tag:string
   url?:string
-  id:string
+  id?:string
   color:string
   onClick? :() => void
 }
@@ -19,7 +19,7 @@ const BoxItem = ({tag, url, id, color, onClick}:Tag) => {
     <StyledContainer className='p-2' color={color}>
       <StyledImageContainer>
         {url && <StyledImage>
-          <Image src={url} alt='test' />
+          <Image src={url} alt={tag} />
         </StyledImage>}
         <StyledLabel>{tag}</StyledLabel>
       </StyledImageContainer>
@@ -30,7 +30,7 @@ const BoxItem = ({tag, url, id, color, onClick}:Tag) => {
   )
 }
 const StyledContainer = styled.div`
-background-color: #${(props: any) => props.color};
+  background-color: #${(props: any) => props.color};
   display: flex;
   width: 100%;
 `

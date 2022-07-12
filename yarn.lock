@@ -7065,6 +7065,11 @@ pkg-up@^3.1.0:
   dependencies:
     find-up "^3.0.0"
 
+pleasejs@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/pleasejs/-/pleasejs-0.4.2.tgz#aaaa1a5fa6902518de7e51e3c63b5f537f823164"
+  integrity sha512-nHsHKvdOiKgFrYXp3bBIHpiSLf723Ra36HRI1Y7shY5utkTmvlRzZCnDtFUbiAWCIIZN6hHm+ximnyOJgeGwXA==
+
 postcss-attribute-case-insensitive@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/postcss-attribute-case-insensitive/-/postcss-attribute-case-insensitive-5.0.1.tgz#86d323c77ab8896ed90500071c2c8329fba64fda"

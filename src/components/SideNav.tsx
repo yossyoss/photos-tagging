@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 import {  Dispatch } from '../store'
 
 const SideNav = () => {
-    const { tags: tagsDispatch } = useDispatch<Dispatch>()
+    const { gallery: tagsDispatch } = useDispatch<Dispatch>()
     const [name, setName] = useState('');
     const handleAddTag = () => {
         if(name){

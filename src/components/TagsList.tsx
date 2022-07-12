@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState, Dispatch } from '../store'
 const TagsList = () => {
-  const {tags}:any = useSelector((state: RootState) => state.tags)
-  const { tags: tagsDispatch } = useDispatch<Dispatch>()
+  const {tags}:any = useSelector((state: RootState) => state.gallery)
+  const { gallery: tagsDispatch } = useDispatch<Dispatch>()
   return (
     <StyledCard>
       <Row className='text-center mb-2'>

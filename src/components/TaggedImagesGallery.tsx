@@ -4,10 +4,10 @@ import {  useSelector } from 'react-redux'
 import { RootState } from '../store'
 import TaggedImagesList from './TaggedImagesList'
 const TaggedImagesGallery = () => {
-  const {tags}:any = useSelector((state: RootState) => state.tags)
+  const {tags}:any = useSelector((state: RootState) => state.gallery)
   return (
       <StyledContainer>
-        {tags.map(tag=>(<TaggedImagesList name={tag.name} key={tag.id}></TaggedImagesList>))}
+        {tags.map(tag=>(<TaggedImagesList name={tag.name} key={tag.id} id={tag.id} color={tag.color}></TaggedImagesList>))}
       </StyledContainer>
   )
 }

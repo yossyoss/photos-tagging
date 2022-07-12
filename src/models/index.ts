@@ -1,10 +1,9 @@
 import { Models } from '@rematch/core'
-import { images } from './images'
-import { tags } from './tags'
+import { gallery } from './gallery'
 
 export interface RootModel extends Models<RootModel> {
-	images: typeof images
-	tags: typeof tags
+
+	gallery: typeof gallery
 }
 
-export const models: RootModel = { images, tags}
+export const models: RootModel = {  gallery}

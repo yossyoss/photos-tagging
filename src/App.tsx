@@ -20,7 +20,7 @@ import { RootState, Dispatch } from './store'
 const App = () => {
   
 
-  const { images: imagesDispatch } = useDispatch<Dispatch>()
+  const { gallery: imagesDispatch } = useDispatch<Dispatch>()
   useEffect(()=>{
       imagesDispatch.getAllImages()
   },[])
