@@ -5,16 +5,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTag } from "@fortawesome/free-solid-svg-icons"
 library.add(faTag)
 
-const ImageCard = () => {
+const ImageCard = ({title, url}) => {
   return (
     <StyledCard>
-      <Card.Img src='https://picsum.photos/id/0/5616/3744' />
+      <Card.Img src={url} />
       <Card.Body>
         <StyledTitle>
-          <StyledDiv>Card Title </StyledDiv>
-          <StyledDiv>
+          <StyledDiv>{title}</StyledDiv>
+          <StyledIcon>
             <FontAwesomeIcon icon={['fas', 'tag']} />
-          </StyledDiv>
+          </StyledIcon>
         </StyledTitle>
       </Card.Body>
     </StyledCard>
@@ -30,4 +30,7 @@ display:flex;
 justify-content: space-between;
 `
 const StyledDiv = styled.div``
+const StyledIcon = styled.div`
+cursor:pointer;
+`
 export default ImageCard

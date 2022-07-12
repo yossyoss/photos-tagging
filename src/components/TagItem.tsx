@@ -2,19 +2,26 @@ import styled from "@emotion/styled"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
-library.add(faTrashCan)
+import { useDispatch } from 'react-redux'
 
-const TagItem = () => {
+import {  Dispatch } from '../store'
+library.add(faTrashCan)
+type Tag = {
+  tag:string
+  url?:string
+}
+const TagItem = ({tag, url}:Tag) => {
+  const { tags: tagsDispatch } = useDispatch<Dispatch>()
   return (
     <StyledContainer className='p-2'>
       <StyledImageContainer>
-        <StyledImage>
+        {url && <StyledImage>
           <Image src={"https://picsum.photos/id/0/5616/3744"} alt='test' />
-        </StyledImage>
-        <StyledLabel>label</StyledLabel>
+        </StyledImage>}
+        <StyledLabel>{tag}</StyledLabel>
       </StyledImageContainer>
       <StyledIcon>
-        <FontAwesomeIcon icon={['fas', 'trash-can']} />
+        <FontAwesomeIcon icon={['fas', 'trash-can']} onClick={()=>tagsDispatch.removeTag(tag)}/>
       </StyledIcon>
     </StyledContainer>
   )

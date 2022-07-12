@@ -1,17 +1,20 @@
 import { createModel } from '@rematch/core'
-
+import axios from 'axios'
 import type { RootModel } from '.'
 
 
 export const images = createModel<RootModel>()({
-	state: 0,
+	state: {images:[]},
 	reducers: {
-		increment: (state, payload: number) => state + payload,
+		setImages: (state, images: Array<any>) => {
+			return {...state, 
+				images}
+		}
 	},
 	effects: (dispatch) => ({
-		async incrementAsync(payload: number): Promise<void> {
-
-			dispatch.images.increment(payload)
+		async getAllImages(): Promise<void> {
+			const {data} = await axios.get('https://picsum.photos/v2/list')
+			dispatch.images.setImages(data)
 		},
 	}),
 })
