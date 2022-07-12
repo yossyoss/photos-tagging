@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
-library.add([faTrashCan])
+library.add(faTrashCan)
 
 const TagItem = () => {
   return (
@@ -14,7 +14,7 @@ const TagItem = () => {
         <StyledLabel>label</StyledLabel>
       </StyledImageContainer>
       <StyledIcon>
-        <FontAwesomeIcon icon='fa-solid fa-trash-can' />
+        <FontAwesomeIcon icon={['fas', 'trash-can']} />
       </StyledIcon>
     </StyledContainer>
   )
