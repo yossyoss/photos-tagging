@@ -9,24 +9,28 @@ library.add(faTrashCan)
 type Tag = {
   tag:string
   url?:string
+  id:string
+  color:string
+  onClick? :() => void
 }
-const TagItem = ({tag, url}:Tag) => {
-  const { tags: tagsDispatch } = useDispatch<Dispatch>()
+const BoxItem = ({tag, url, id, color, onClick}:Tag) => {
+  
   return (
-    <StyledContainer className='p-2'>
+    <StyledContainer className='p-2' color={color}>
       <StyledImageContainer>
         {url && <StyledImage>
-          <Image src={"https://picsum.photos/id/0/5616/3744"} alt='test' />
+          <Image src={url} alt='test' />
         </StyledImage>}
         <StyledLabel>{tag}</StyledLabel>
       </StyledImageContainer>
-      <StyledIcon>
-        <FontAwesomeIcon icon={['fas', 'trash-can']} onClick={()=>tagsDispatch.removeTag(tag)}/>
-      </StyledIcon>
+      {id && <StyledIcon>
+        <FontAwesomeIcon icon={['fas', 'trash-can']} onClick={onClick}/>
+      </StyledIcon>}
     </StyledContainer>
   )
 }
 const StyledContainer = styled.div`
+background-color: #${(props: any) => props.color};
   display: flex;
   width: 100%;
 `
@@ -47,4 +51,4 @@ const StyledIcon = styled(StyledLabel)`
   cursor: pointer;
 `
 
-export default TagItem
+export default BoxItem

@@ -3,3 +3,8 @@ export type Image = {
     id: string
     author: string
 }
+export type Tag = {
+    name: string
+    id: string
+    color: string
+}

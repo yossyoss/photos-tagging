@@ -3,19 +3,22 @@ import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import TagBox from "./TagBox"
+import TagsList from "./TagsList"
 import styled from "@emotion/styled"
 import {useState} from 'react'
 import { useDispatch } from 'react-redux'
-
+import { v4 as uuidv4 } from 'uuid';
 import {  Dispatch } from '../store'
 
 const SideNav = () => {
     const { tags: tagsDispatch } = useDispatch<Dispatch>()
     const [name, setName] = useState('');
     const handleAddTag = () => {
-        tagsDispatch.addTag(name)
-        setName('')
+        if(name){
+            const color = Math.floor(Math.random()*16777215).toString(16)
+            tagsDispatch.addTag({name, id: uuidv4(), color})
+            setName('')
+        }
     }
     const handleChange= (event) => {
         setName(event.target.value);
@@ -27,18 +30,18 @@ return (
               <Form.Control
               value={name} onChange={handleChange}
                 aria-label='Small'
-                placeholder='New tag...'
+                placeholder='Add New tag...'
                 aria-describedby='inputGroup-sizing-sm'
               />
             </InputGroup>
           </Row>
-          <Row className='justify-content-md-center mb-5'>
+          <Row className='justify-content-md-center mb-3'>
             <Button variant='primary' type='submit' onClick={handleAddTag}>
               Add
             </Button>
           </Row>
           <Row className='justify-content-md-center mb-5'>
-            <TagBox></TagBox>
+            <TagsList></TagsList>
           </Row>
         </StyledSideNav>
 )
@@ -49,6 +52,7 @@ const StyledSideNav = styled(Col)`
   height: 500px;
   padding: 1em;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-behavior: smooth;
   display: flex;
   flex-direction: column;

@@ -6,7 +6,7 @@ import styled from "@emotion/styled"
 import Container from "react-bootstrap/Container"
 
 import SideNav from "./components/SideNav"
-import TagsGallery from "./components/TagsGallery"
+import TaggedImagesGallery from "./components/TaggedImagesGallery"
 import ImageGallery from "./components/ImageGallery"
 
 import Row from "react-bootstrap/Row"
@@ -31,7 +31,7 @@ const App = () => {
        <SideNav/>
         <Col sm={9}>
           <ImageGallery/>
-          <TagsGallery/>
+          <TaggedImagesGallery/>
         </Col>
       </Row>
     </Container>
