@@ -1,6 +1,6 @@
 
 ### Grid of photos that allow users to assign each image to one or more tags.
-### User can addand remove tags.
+### User can add and remove tags.
 
 ## [Demo](https://yossyoss.github.io/photos-tagging)
 
