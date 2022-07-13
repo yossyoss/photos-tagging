@@ -7,7 +7,7 @@ import Header from './Header'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState, Dispatch } from '../store'
-const TaggedImagesList = ({name, tagId, color, images}) => {
+const TaggedImagesBox = ({name, tagId, color, images}) => {
 
   const { gallery: tagsDispatch } = useDispatch<Dispatch>()
 
@@ -33,4 +33,4 @@ const StyledCard = styled(Card)`
   height: 20rem;
 
 `
-export default TaggedImagesList
+export default TaggedImagesBox

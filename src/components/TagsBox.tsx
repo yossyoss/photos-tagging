@@ -6,7 +6,7 @@ import Header from './Header'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState, Dispatch } from '../store'
-const TagsList = () => {
+const TagsBox = () => {
   const {tags}:any = useSelector((state: RootState) => state.gallery)
   const { gallery: tagsDispatch } = useDispatch<Dispatch>()
   return (
@@ -29,4 +29,4 @@ const StyledCard = styled(Card)`
   height: 20rem;
   overflow-x: auto;
 `
-export default TagsList
+export default TagsBox

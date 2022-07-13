@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import TagsList from "./TagsList"
+import TagsBox from "./TagsBox"
 import styled from "@emotion/styled"
 import {useState} from 'react'
 import { useDispatch } from 'react-redux'
@@ -41,7 +41,7 @@ return (
             </Button>
           </Row>
           <Row className='justify-content-md-center mb-5'>
-            <TagsList></TagsList>
+            <TagsBox></TagsBox>
           </Row>
         </StyledSideNav>
 )

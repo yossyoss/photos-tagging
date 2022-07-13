@@ -2,12 +2,12 @@ import styled from "@emotion/styled"
 import {  useSelector } from 'react-redux'
 
 import { RootState } from '../store'
-import TaggedImagesList from './TaggedImagesList'
+import TaggedImagesBox from './TaggedImagesBox'
 const TaggedImagesGrid = () => {
   const {tags}:any = useSelector((state: RootState) => state.gallery)
   return (
       <StyledContainer>
-        {tags.map(tag=>(<TaggedImagesList name={tag.name} key={tag.id} tagId={tag.id} color={tag.color} images={tag.images}></TaggedImagesList>))}
+        {tags.map(tag=>(<TaggedImagesBox name={tag.name} key={tag.id} tagId={tag.id} color={tag.color} images={tag.images}></TaggedImagesBox>))}
       </StyledContainer>
   )
 }
