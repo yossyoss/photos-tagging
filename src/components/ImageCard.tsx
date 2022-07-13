@@ -10,16 +10,35 @@ import BoxItem from './BoxItem'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState, Dispatch } from '../store'
+import { ContentPasteSearchOutlined } from "@mui/icons-material"
 library.add(faTag)
 
-const ImageCard = ({title, url}) => {
+const ImageCard = ({title, url, id}) => {
+  const { gallery: {adaptTaggedImages} } = useDispatch<Dispatch>()
   const {tags}:any = useSelector((state: RootState) => state.gallery)
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const [selectedTags, setSelectedTags] = useState([]);
+  const handleSubmit = () => {
+    adaptTaggedImages({id, selectedTags})
+    setShow(false)
+  };
+  const handleClose = () => {
+    setShow(false)
+  }
   const handleShow = () => {
     if(tags.length)
       setShow(true)
-  };
+  }
+  const handleSelect = (tag) => {
+    const exists = selectedTags.find(st=>st.id===tag.id)
+    let updateSelectedItem = []
+    if(exists){
+      updateSelectedItem = selectedTags.filter(s=>s.id!==tag.id)
+      setSelectedTags(updateSelectedItem)
+    }else{
+      setSelectedTags([...selectedTags, tag])
+    }
+  }
   return (
     <>
     <StyledCard>
@@ -37,8 +56,12 @@ const ImageCard = ({title, url}) => {
     <Modal show={show} onHide={handleClose} size="sm">
     <Modal.Body>
     {tags.map(tag=>{
+        let isSelected = !!selectedTags.find(st=> st.id ===tag.id)
+
         return(
-        <BoxItem tag={tag.name} key={tag.id} onClick={handleClose} color={tag.color}></BoxItem>
+          <StyledTagItem isSelected={isSelected} onClick={() => handleSelect(tag)} key={tag.id}>
+            <BoxItem tag={tag.name} color={tag.color}></BoxItem>
+        </StyledTagItem>
         )
       })}
 
@@ -47,8 +70,8 @@ const ImageCard = ({title, url}) => {
       <Button variant="secondary" onClick={handleClose}>
         Close
       </Button>
-      <Button variant="primary" onClick={handleClose}>
-        Save Changes
+      <Button variant="primary" onClick={handleSubmit}>
+        Apply
       </Button>
     </Modal.Footer>
   </Modal>
@@ -64,7 +87,16 @@ const StyledTitle = styled(Card.Title)`
 display:flex;
 justify-content: space-between;
 `
-const StyledDiv = styled.div``
+const StyledDiv = styled.div`
+
+`
+type Selected = {
+  isSelected: boolean
+}
+const StyledTagItem = styled.div`
+border: ${(props: Selected) => (props.isSelected ? '2px dotted red' : 'none')};
+cursor: pointer;
+`
 const StyledIcon = styled.div`
 cursor:pointer;
 `

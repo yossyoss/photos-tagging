@@ -6,8 +6,8 @@ import styled from "@emotion/styled"
 import Container from "react-bootstrap/Container"
 
 import SideNav from "./components/SideNav"
-import TaggedImagesGallery from "./components/TaggedImagesGallery"
-import ImageGallery from "./components/ImageGallery"
+import TaggedImagesGrid from "./components/TaggedImagesGrid"
+import ImageGrid from "./components/ImageGrid"
 
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
@@ -30,8 +30,8 @@ const App = () => {
       <Row className='justify-content-md-center'>
        <SideNav/>
         <Col sm={9}>
-          <ImageGallery/>
-          <TaggedImagesGallery/>
+          <ImageGrid/>
+          <TaggedImagesGrid/>
         </Col>
       </Row>
     </Container>

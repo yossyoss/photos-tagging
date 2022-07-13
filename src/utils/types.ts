@@ -6,5 +6,6 @@ export type Image = {
 export type Tag = {
     name: string
     id: string
-    color: string
+    color: string,
+    images: [Image] | []
 }

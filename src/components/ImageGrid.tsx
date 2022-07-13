@@ -6,17 +6,26 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState, Dispatch } from '../store'
 import {Image} from '../utils/types'
 
-const ImageGallery = () => {
-  const {images}:any = useSelector((state: RootState) => state.gallery)
+const ImageGrid = () => {
+  const {images, tags}:any = useSelector((state: RootState) => state.gallery)
+  const unTaggedImages = images.filter(image=>{
+    let test =[]
+    tags.map(tag=> {
+      let taggedImage = tag.images.find(tagImage=> tagImage.id === image.id)
+      if(taggedImage)test.push(taggedImage)
+    })
+    if(test.length)return false
+    return true
+  })
     return (
         <StyledContainer>
             <Row className='mb-2'>
               <Header>Unassigned</Header>
             </Row>
             <StyledGallery>
-              {images.map((image:Image)=>{
+              {unTaggedImages.map((image:Image)=>{
                 return(
-                  <StyledImageCard key={image.id} title={image.author} url={image.download_url}></StyledImageCard>
+                  <StyledImageCard key={image.id} id={image.id} title={image.author} url={image.download_url}></StyledImageCard>
                 )
               })}
             </StyledGallery>
@@ -40,4 +49,4 @@ const StyledGallery = styled(Row)`
   margin-left: 1em;
   gap: 10px;
 `
-export default ImageGallery
+export default ImageGrid

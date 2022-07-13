@@ -16,7 +16,7 @@ const SideNav = () => {
     const handleAddTag = () => {
         if(name){
             const color = Math.floor(Math.random()*16777215).toString(16)
-            tagsDispatch.addTag({name, id: uuidv4(), color})
+            tagsDispatch.addTag({name, id: uuidv4(), color, images:[]})
             setName('')
         }
     }

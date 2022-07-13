@@ -10,8 +10,8 @@ type Tag = {
   tag:string
   url?:string
   id?:string
-  color:string
-  onClick? :() => void
+  color?:string
+  onClick? : any
 }
 const BoxItem = ({tag, url, id, color, onClick}:Tag) => {
   
