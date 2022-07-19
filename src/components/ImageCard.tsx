@@ -8,9 +8,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import BoxItem from './BoxItem'
 import { useDispatch, useSelector } from 'react-redux'
-
 import { RootState, Dispatch } from '../store'
-import { ContentPasteSearchOutlined } from "@mui/icons-material"
+
 library.add(faTag)
 
 const ImageCard = ({title, url, id}) => {

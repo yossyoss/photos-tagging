@@ -5,10 +5,15 @@ import { RootState } from '../store'
 import TaggedImagesBox from './TaggedImagesBox'
 const TaggedImagesGrid = () => {
   const {tags}:any = useSelector((state: RootState) => state.gallery)
+  
   return (
+    
       <StyledContainer>
+
         {tags.map(tag=>(<TaggedImagesBox name={tag.name} key={tag.id} tagId={tag.id} color={tag.color} images={tag.images}></TaggedImagesBox>))}
+
       </StyledContainer>
+      
   )
 }
 const StyledContainer = styled.div`

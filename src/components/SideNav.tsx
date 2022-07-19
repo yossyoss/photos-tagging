@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid';
 import {  Dispatch } from '../store'
 
+
 const SideNav = () => {
     const { gallery: tagsDispatch } = useDispatch<Dispatch>()
     const [name, setName] = useState('');
@@ -23,6 +24,7 @@ const SideNav = () => {
     const handleChange= (event) => {
         setName(event.target.value);
       }
+
 return (
     <StyledSideNav xs={12} sm={3}>
           <Row className='mb-2' xs={2}>
@@ -41,7 +43,9 @@ return (
             </Button>
           </Row>
           <Row className='justify-content-md-center mb-5'>
+
             <TagsBox></TagsBox>
+
           </Row>
         </StyledSideNav>
 )

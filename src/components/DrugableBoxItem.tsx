@@ -3,6 +3,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { useDispatch } from 'react-redux'
+import BoxItem from './BoxItem'
 import { Draggable } from 'react-beautiful-dnd';
 import {  Dispatch } from '../store'
 library.add(faTrashCan)
@@ -14,12 +15,16 @@ type Tag = {
   index?:number
   onClick? : any
 }
-const BoxItem = ({tag, url, id, color, onClick, index}:Tag) => {
+const DrugableBoxItem = ({tag, url, id, color, onClick, index}:Tag) => {
   
   return (
+    <Draggable draggableId={id} index={index}>
+        {provided => (
 
-
-    <StyledContainer className='p-2' color={color}>
+    <StyledContainer className='p-2' color={color} {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+            >
       <StyledImageContainer>
         {url && <StyledImage>
           <Image src={url} alt={tag} />
@@ -30,6 +35,9 @@ const BoxItem = ({tag, url, id, color, onClick, index}:Tag) => {
         <FontAwesomeIcon icon={['fas', 'trash-can']} onClick={onClick}/>
       </StyledIcon>}
     </StyledContainer>
+
+    )}
+    </Draggable>
   )
 }
 const StyledContainer = styled.div`
@@ -54,4 +62,4 @@ const StyledIcon = styled(StyledLabel)`
   cursor: pointer;
 `
 
-export default BoxItem
+export default DrugableBoxItem

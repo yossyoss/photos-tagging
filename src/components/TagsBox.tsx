@@ -9,14 +9,17 @@ import { RootState, Dispatch } from '../store'
 const TagsBox = () => {
   const {tags}:any = useSelector((state: RootState) => state.gallery)
   const { gallery: tagsDispatch } = useDispatch<Dispatch>()
+
+
   return (
     <StyledCard>
       <Row className='text-center mb-2'>
         <Header>{tags.length ? 'Available tags' : 'No Available tags'}</Header>
       </Row>
+      
       {tags.map(tag=>{
         return(
-        <BoxItem tag={tag.name} key={tag.id} id={tag.id} onClick={()=>tagsDispatch.removeTag(tag.id)} color={tag.color}></BoxItem>
+        <BoxItem tag={tag.name} key={tag.id} id={tag.id} onClick={()=>tagsDispatch.removeTag(tag.id)} color={tag.color} index={0}></BoxItem>
         )
       })}
     </StyledCard>
