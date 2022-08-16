@@ -15,7 +15,7 @@ const SideNav = () => {
     const [name, setName] = useState('');
     const handleAddTag = () => {
         if(name){
-            const color = Math.floor(Math.random()*16777215).toString(16)
+            const color = `(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
             tagsDispatch.addTag({name, id: uuidv4(), color, images:[]})
             setName('')
         }
@@ -23,23 +23,34 @@ const SideNav = () => {
     const handleChange= (event) => {
         setName(event.target.value);
       }
+      const handleKeypress = event => {
+        if (event.charCode === 13) {
+          setName(event.target.value);
+          handleAddTag()
+        }
+      }
 return (
-    <StyledSideNav xs={12} sm={3}>
+    <StyledSideNav xs={12} sm={3} className="">
           <Row className='mb-2' xs={2}>
-            <InputGroup size='sm' className='mb-3'>
+          
+            <InputGroup size='sm' className='mb-3' onKeyPress={handleKeypress}>
+            
               <Form.Control
               value={name} onChange={handleChange}
                 aria-label='Small'
                 placeholder='Add New tag...'
                 aria-describedby='inputGroup-sizing-sm'
               />
+              <Button variant='primary' type='submit' onClick={handleAddTag}>
+              Add
+            </Button>
             </InputGroup>
           </Row>
-          <Row className='justify-content-md-center mb-3'>
+          {/* <Row className='shadow-lg p-3 mb-5 bg-white rounded justify-content-md-center mb-3'>
             <Button variant='primary' type='submit' onClick={handleAddTag}>
               Add
             </Button>
-          </Row>
+          </Row> */}
           <Row className='justify-content-md-center mb-5'>
             <TagsBox></TagsBox>
           </Row>
@@ -48,8 +59,8 @@ return (
 }
 
 const StyledSideNav = styled(Col)`
-  border: 1px solid lightgray;
-  height: 500px;
+  //border: 1px solid lightgray;
+  //height: 500px;
   padding: 1em;
   overflow-x: auto;
   overflow-y: hidden;

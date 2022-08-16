@@ -45,8 +45,6 @@ export const gallery = createModel<RootModel>()({
             remove(tag.images,{id: imageId})
             return {...state, 
                 tags}
-
-
         }
 	},
 	effects: (dispatch) => ({

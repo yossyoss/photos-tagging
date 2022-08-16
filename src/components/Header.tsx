@@ -2,7 +2,8 @@ import styled from "@emotion/styled"
 const Header = ({children}) => {
   return (
     <>
-      <StyledLabel>{children}</StyledLabel>
+      <StyledLabel>
+        {children}</StyledLabel>
     </>
   )
 }

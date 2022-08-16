@@ -2,35 +2,35 @@ import Header from "./Header"
 import Row from "react-bootstrap/Row"
 import ImageCard from "./ImageCard"
 import styled from "@emotion/styled"
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState, Dispatch } from '../store'
-import {Image} from '../utils/types'
+import { useSelector } from 'react-redux'
+import { RootState } from '../store'
+import { Image } from '../utils/types'
 
 const ImageGrid = () => {
-  const {images, tags}:any = useSelector((state: RootState) => state.gallery)
-  const unTaggedImages = images.filter(image=>{
-    let test =[]
-    tags.map(tag=> {
-      let taggedImage = tag.images.find(tagImage=> tagImage.id === image.id)
-      if(taggedImage)test.push(taggedImage)
+  const { images, tags }: any = useSelector((state: RootState) => state.gallery)
+  const unTaggedImages = images.filter(image => {
+    let test = []
+    tags.map(tag => {
+      let taggedImage = tag.images.find(tagImage => tagImage.id === image.id)
+      if (taggedImage) test.push(taggedImage)
     })
-    if(test.length)return false
+    if (test.length) return false
     return true
   })
-    return (
-        <StyledContainer>
-            <Row className='mb-2'>
-              <Header>Unassigned</Header>
-            </Row>
-            <StyledGallery>
-              {unTaggedImages.map((image:Image)=>{
-                return(
-                  <StyledImageCard key={image.id} id={image.id} title={image.author} url={image.download_url}></StyledImageCard>
-                )
-              })}
-            </StyledGallery>
-          </StyledContainer>
-    )
+  return (
+    <StyledContainer className="shadow-sm bg-white rounded">
+      <Row className='mb-2'>
+        <Header>Unassigned</Header>
+      </Row>
+      <StyledGallery>
+        {unTaggedImages.map((image: Image) => {
+          return (
+            <StyledImageCard key={image.id} id={image.id} title={image.author} url={image.download_url}></StyledImageCard>
+          )
+        })}
+      </StyledGallery>
+    </StyledContainer>
+  )
 }
 
 const StyledImageCard = styled(ImageCard)`
@@ -38,7 +38,7 @@ const StyledImageCard = styled(ImageCard)`
 `
 const StyledContainer = styled.div`
   height: 500px;
-  border: 1px solid lightgray;
+  //border: 1px solid lightgray;
   padding: 1em;
   overflow: auto;
   scroll-behavior: smooth;

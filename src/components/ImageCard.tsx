@@ -10,7 +10,7 @@ import BoxItem from './BoxItem'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState, Dispatch } from '../store'
-import { ContentPasteSearchOutlined } from "@mui/icons-material"
+
 library.add(faTag)
 
 const ImageCard = ({title, url, id}) => {
@@ -94,7 +94,8 @@ type Selected = {
   isSelected: boolean
 }
 const StyledTagItem = styled.div`
-border: ${(props: Selected) => (props.isSelected ? '2px dotted red' : 'none')};
+
+opacity: ${(props: Selected) => (props.isSelected ? '0.2' : '1')};
 cursor: pointer;
 `
 const StyledIcon = styled.div`
