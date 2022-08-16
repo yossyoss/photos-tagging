@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import "./App.scss"
+import "./App.css"
 import styled from "@emotion/styled"
 
 import Container from "react-bootstrap/Container"

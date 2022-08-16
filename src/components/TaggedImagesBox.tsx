@@ -29,12 +29,14 @@ return (
 
 
 const StyledHeader = styled.div`
-
+  position: sticky;
+  top: 0;
 `
 const StyledCard = styled(Card)`
   width: 13rem;
   min-width: 13rem;
   height: 20rem;
+  overflow-x: auto;
 
 `
 export default TaggedImagesBox

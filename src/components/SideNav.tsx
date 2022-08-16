@@ -33,7 +33,7 @@ return (
     <StyledSideNav xs={12} sm={3} className="">
           <Row className='mb-2' xs={2}>
           
-            <InputGroup size='sm' className='mb-3' onKeyPress={handleKeypress}>
+            <StyledInput size='sm' className='mb-3' onKeyPress={handleKeypress}>
             
               <Form.Control
               value={name} onChange={handleChange}
@@ -41,10 +41,10 @@ return (
                 placeholder='Add New tag...'
                 aria-describedby='inputGroup-sizing-sm'
               />
-              <Button variant='primary' type='submit' onClick={handleAddTag}>
+              <SyledButton variant='primary' type='submit' onClick={handleAddTag}>
               Add
-            </Button>
-            </InputGroup>
+            </SyledButton>
+            </StyledInput>
           </Row>
           {/* <Row className='shadow-lg p-3 mb-5 bg-white rounded justify-content-md-center mb-3'>
             <Button variant='primary' type='submit' onClick={handleAddTag}>
@@ -57,7 +57,20 @@ return (
         </StyledSideNav>
 )
 }
-
+const StyledInput = styled(InputGroup)`
+input {
+  border-radius: 30px !important;
+  &:focus {
+    z-index:0 !important;
+  }
+}
+`
+const SyledButton = styled(Button)`
+  border-radius: 0 30px 30px 0 !important;
+  position: absolute !important;
+  right: 13px !important;
+  z-index:99;
+`
 const StyledSideNav = styled(Col)`
   //border: 1px solid lightgray;
   //height: 500px;
