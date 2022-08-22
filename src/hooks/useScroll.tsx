@@ -8,6 +8,7 @@ const useScroll = () => {
     const el = e.target
     // @ts-expect-error
     const maxHeight = el.scrollHeight - el.offsetHeight
+    console.log(maxHeight)
     // @ts-expect-error
     setIsScrolledToTop(el.scrollTop < 5)
     // @ts-expect-error
