@@ -1,10 +1,9 @@
 
 ### Grid of photos that allow users to assign each image to one or more tags.
 #### User can add and remove tags.
-This is a WIP project.
-some feature that need to be implements:
+WIP, some feature that still need to be implements:
 - Filter by tag(s)
-- Persist data between page reload
+- Persist data when page reload
 - D&D - User can drag a tag to a photo and/or drag a photo to a tag
 - paginataion
 
